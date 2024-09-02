@@ -1,0 +1,5 @@
+
+enum Menus {
+  visit,
+  add
+}

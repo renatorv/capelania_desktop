@@ -14,3 +14,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# Criação do projeto
+ flutter create --platforms=macos,windows ./capelania_desktop
+
+# Habilitar plataformas
+flutter config --enable-macos-desktop
+flutter config --enable-windows-desktop
+flutter config --enable-linux-desktop
+
+https://www.youtube.com/watch?v=3HREQwLmy88 
