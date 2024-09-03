@@ -3,7 +3,6 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'app/home.dart';
-import 'app/modules/home/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,8 +12,9 @@ Future<void> main() async {
     await windowManager.setTitle('Capelania IBNC');
     await windowManager.setTitleBarStyle(TitleBarStyle.normal);
     await windowManager.setBackgroundColor(Colors.transparent);
-    await windowManager.setSize(const Size(755, 545));
-    await windowManager.setMinimumSize(const Size(755, 545));
+    await windowManager.setSize(const Size(800, 600));
+    await windowManager.setMinimumSize(const Size(800, 600));
+    await windowManager.setMaximumSize(const Size(800, 600));
     await windowManager.center();
     await windowManager.show();
     await windowManager.setSkipTaskbar(false);

@@ -77,7 +77,6 @@ class _HomeState extends State<Home> with WindowListener {
                         icon: Icon(e.iconData),
                         body: index == 0
                             ? Container(
-                                // color: Colors.grey,
                                 child: state.visits.isEmpty
                                     ? const Center(
                                         child: Icon(
