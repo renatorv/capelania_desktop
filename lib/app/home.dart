@@ -7,6 +7,7 @@ import 'core/utils/kcolors.dart';
 import 'list_tile_visit_home.dart';
 import 'models/menus.dart';
 import 'models/new_visit.dart';
+import 'models/visit.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -66,40 +67,81 @@ class _HomeState extends State<Home> with WindowListener {
               ),
             ),
             pane: NavigationPane(
-                selected: index,
-                onChanged: (i) => setState(() {
-                      index = i;
-                    }),
-                displayMode: PaneDisplayMode.compact,
-                items: listVisits
-                    .map<NavigationPaneItem>(
-                      (e) => PaneItem(
-                        icon: Icon(e.iconData),
-                        body: index == 0
-                            ? Container(
-                                child: state.visits.isEmpty
-                                    ? const Center(
-                                        child: Icon(
-                                          FluentIcons.clear,
-                                          size: 100,
-                                          color: Kolors.kGray,
-                                        ),
-                                      )
-                                    : ListView.builder(
+              selected: index,
+              onChanged: (i) => setState(() {
+                index = i;
+              }),
+              displayMode: PaneDisplayMode.compact,
+              items: listVisits
+                  .map<NavigationPaneItem>(
+                    (e) => PaneItem(
+                      icon: Icon(e.iconData),
+                      body: index == 0
+                          ? Container(
+                              child: state.visits.isEmpty
+                                  ? const Center(
+                                      child: Icon(
+                                        FluentIcons.clear,
+                                        size: 100,
+                                        color: Kolors.kGray,
+                                      ),
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                      child: ListView.builder(
                                         itemCount: state.visits.length,
                                         itemBuilder: (context, index) {
                                           return ListTileVisitHome(visit: state.visits[index]);
                                         },
                                       ),
-                              )
-                            : Container(),
-                        title: Text(e.title),
-                        onTap: () {
-                          print(index);
-                        },
-                      ),
-                    )
-                    .toList()),
+                                    ),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 10, bottom: 10),
+                              child: ListView.separated(
+                                separatorBuilder: (context, index) => const Divider(),
+                                itemCount: state.visits.length,
+                                itemBuilder: (context, index) {
+                                  Visit visit = state.visits[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16, top: 8),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          flex: 40,
+                                          child: ListTile(
+                                            title: Text(visit.name),
+                                            subtitle: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(visit.address),
+                                                Text(visit.phone),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 60,
+                                          child: Container(
+                                            padding: const EdgeInsets.all(6),
+                                            color: Kolors.kGrayLight,
+                                            child: Text(visit.description)),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                      title: Text(e.title),
+                      onTap: () {
+                        print(index);
+                      },
+                    ),
+                  )
+                  .toList(),
+            ),
           );
         } else {
           return Container();

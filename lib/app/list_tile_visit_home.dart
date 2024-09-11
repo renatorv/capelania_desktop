@@ -13,7 +13,7 @@ class ListTileVisitHome extends StatefulWidget {
 
 class _ListTileVisitHomeState extends State<ListTileVisitHome> {
   final _obsEc = TextEditingController();
-  
+
   @override
   void initState() {
     super.initState();
@@ -36,18 +36,19 @@ class _ListTileVisitHomeState extends State<ListTileVisitHome> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
         child: Container(
-          width: screenWidth *.3,
+          width: screenWidth * .4,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(8),
             color: Kolors.kWhite,
             boxShadow: const [
               BoxShadow(color: Kolors.kRed, spreadRadius: 1),
             ],
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: screenWidth * .2,
+                width: screenWidth * .4,
                 child: ListTile(
                   title: Text(
                     widget.visit.name,
@@ -90,17 +91,21 @@ class _ListTileVisitHomeState extends State<ListTileVisitHome> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: screenHeight *.16,
-                width: screenWidth * .2,
-                child: TextBox(
-                  minLines: 5,
-                  maxLines: 10,
-                  controller: _obsEc,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: Kolors.kRed,
+              Padding(
+                padding: const EdgeInsets.only(top: 4, bottom: 4, right: 4),
+                child: SizedBox(
+                  height: screenHeight * .28,
+                  width: screenWidth * .5,
+                  child: TextBox(
+                    minLines: 5,
+                    maxLines: 10,
+                    controller: _obsEc,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        width: 1,
+                        color: Kolors.kRed,
+                      ),
                     ),
                   ),
                 ),

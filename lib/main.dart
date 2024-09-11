@@ -12,9 +12,9 @@ Future<void> main() async {
     await windowManager.setTitle('Capelania IBNC');
     await windowManager.setTitleBarStyle(TitleBarStyle.normal);
     await windowManager.setBackgroundColor(Colors.transparent);
-    await windowManager.setSize(const Size(800, 600));
-    await windowManager.setMinimumSize(const Size(800, 600));
-    await windowManager.setMaximumSize(const Size(800, 600));
+    await windowManager.setSize(const Size(820, 620));
+    await windowManager.setMinimumSize(const Size(820, 620));
+    await windowManager.setMaximumSize(const Size(820, 620));
     await windowManager.center();
     await windowManager.show();
     await windowManager.setSkipTaskbar(false);
